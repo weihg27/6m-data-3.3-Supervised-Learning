@@ -42,11 +42,12 @@
 
 | Phase | Time | Format |
 |---|---|---|
-| Concept walkthrough | ~90 min | Instructor presents core concepts; learners follow along on the [**interactive key-concepts page**](https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/) |
+| Concept recap (slides) | ~45–60 min | Instructor recaps the key concepts with the lesson slides — you already explored the [interactive key-concepts page](https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/) pre-class |
 | Hands-on code-alongs | ~90 min | Three notebooks (~25–30 min each) — Core sections only |
+| Class exit survey | ~15 min | Quick survey to capture what clicked and what didn't — helps shape the next session |
 | (Self-study after class) | self-paced | Each notebook has a 🟡 Extension section for going deeper |
 
-**Why this structure?** Realistic 3-hour pacing means ~1.5 hours of concepts + ~1.5 hours of coding *including Q&A and environment troubleshooting*. Each in-class notebook ends at a clearly marked 🟡 Extension boundary — anything below the line is for self-study, not class time.
+**Why this structure?** Realistic 3-hour pacing means ~1 hour of slide-based concept recap + ~1.5 hours of coding *including Q&A and environment troubleshooting*, closing with a 15-minute exit survey. Each in-class notebook ends at a clearly marked 🟡 Extension boundary — anything below the line is for self-study, not class time.
 
 ---
 
@@ -66,6 +67,7 @@ You will:
 - Open and run `notebooks/01_monday_morning.ipynb` (~15 min) — Sarah opens the new NorthStar churn dataset and sees the messiness of real data for the first time
 - Reflect on which features you'd actually trust
 - Watch two short videos (StatQuest on logistic regression + bias-variance)
+- Explore the [**interactive key-concepts page**](https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/) after the videos (GitHub Pages)
 - Try three mini-exercises with sample answers
 
 ---
@@ -129,7 +131,7 @@ lesson.md                              ← Short reference: overview, takeaways,
 reference.md                           ← Phase 3: Further reading + glossary (~20 terms)
 environment.yml                        ← Conda environment spec
 docs/
-  index.html                           ← Interactive key-concepts walkthrough (served at https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/ via GitHub Pages)
+  index.html                           ← Interactive key-concepts page — explore during pre-class (served at https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/ via GitHub Pages)
 notebooks/
   data/
     northstar_churn.csv                ← 10,000-row training dataset (loads into all 4 notebooks)

@@ -1,6 +1,6 @@
 # Lesson — L03 Supervised Learning Foundations
 
-> **Chapter 3 of the NorthStar Retail story.** *Sarah Chen · Customer Experience Analyst · January 2023.*
+> **Chapter 3 of the NorthStar Retail story.** *Sarah Chen · Customer Experience Analyst · Week 4.*
 > Marcus's question after Sarah's Friday presentation — *"Can you train your own model on NorthStar data?"* — is the brief for the whole week. Sarah has `northstar_churn.csv`: 10,000 customers, 11 features, one target column (`churned`), and Friday to ship a working classifier.
 
 This document is a **short reference** — the lesson itself is taught in the notebooks. Read it for orientation before class, then come back for the takeaways, the threshold-choice checklist, the review questions, and the course map.
@@ -49,6 +49,39 @@ Before you set or change a classification threshold, run it through this three-s
 3. **Did you decide the threshold from business inputs, or from the test set?** If you tuned the threshold to maximise F1 on the held-out data, you've used that data to make a decision — and you no longer have a clean evaluation. Pick the threshold from capacity + cost, *then* report the metrics at that threshold.
 
 Skip any of these and you'll either drown the team in low-value flags or quietly burn your held-out evaluation.
+
+---
+
+## Key concepts — plain-English review
+
+A quick self-check before the review questions. Read each concept; if any feels fuzzy, jump back to the notebook Part that teaches it.
+
+**Classification vs regression** — Both are supervised learning; classification predicts a category (churn / no churn), regression predicts a number (how much will they spend?).
+*Real-world use:* A bank classifying loan applications as approve/decline vs estimating the exact house value for a mortgage.
+
+**Preprocessing (encoding and scaling)** — Models only eat numbers on comparable scales. Encoding turns categories like "premium plan" into numbers; scaling puts pounds and percentages on the same footing so no feature shouts louder just because its numbers are bigger.
+*Real-world use:* A hospital model mixing age (0–100) and blood-test values (0.001–0.1) must scale them, or age dominates for no medical reason.
+
+**Data leakage** — Accidentally letting information from your test data (or the future) sneak into training. The model looks brilliant in the lab and flops in the real world.
+*Real-world use:* Fitting a scaler on the whole dataset before splitting — like letting a student glimpse the exam paper while revising.
+
+**Train / validation / test discipline** — Train on one slice, tune on another (via cross-validation), and keep a final untouched slice to judge the finished model — like a mock exam kept sealed until the end.
+*Real-world use:* Sarah cross-validates on NorthStar's training data and only opens the held-out test set once, for the final verdict.
+
+**Logistic regression** — A simple, transparent model that outputs a probability between 0 and 1 (e.g., "73% likely to churn"). Its coefficients show which features push the prediction up or down.
+*Real-world use:* Credit scoring — lenders like it because they can explain to a regulator exactly why an applicant was declined.
+
+**The accuracy trap** — When one outcome is rare, a lazy model that always predicts the common outcome scores high accuracy while being useless. High accuracy on imbalanced data proves nothing.
+*Real-world use:* A model that says "no fraud" for every transaction is 99%+ accurate — and catches zero fraud.
+
+**Confusion matrix** — A 2×2 scorecard of the four possible outcomes: correctly flagged, correctly ignored, false alarm, and missed case. It shows *how* a model is wrong, not just how often.
+*Real-world use:* A cancer-screening programme tracks missed cancers and false alarms separately, because they carry very different human costs.
+
+**Precision vs recall** — Precision: of everyone we flagged, how many were right? Recall: of all the real cases, how many did we catch? Improving one usually costs the other.
+*Real-world use:* A spam filter needs high precision (never bin a job offer); airport security needs high recall (never miss a threat), accepting more false alarms.
+
+**Decision threshold** — The cutoff that turns a probability into an action ("call the customer if churn risk > 0.35"). It's a business decision driven by team capacity and error costs — 0.5 is rarely right.
+*Real-world use:* NorthStar's retention team can call 200 customers a week, so Sarah sets the threshold to flag roughly 200 — not to maximise a metric.
 
 ---
 

@@ -16,13 +16,15 @@ This is the simplest version of "show up prepared": watch a short intro video, r
 
 Before you open the notebook, watch the short intro video: **[L03 intro video on YouTube](https://youtu.be/ZKjA1Xz8XOI)**. It's under 5 minutes and frames the problem you're about to solve. Watching this first makes the notebook click faster.
 
+🕹️ **After the video:** open the [interactive key-concepts page](https://su-ntu-ctp.github.io/6m-data-3.3-Supervised-Learning/) and play with it for 10–15 minutes. Drag the sliders, click the buttons — you can't break anything. Arriving in class having *seen* these ideas move makes the session far easier.
+
 ---
 
 ## Step 1 — Try it (~20 min)
 
 Open **`notebooks/01_monday_morning.ipynb`** in VS Code with the `dsai-m3` kernel. Run every cell top to bottom. Read the markdown between cells. Don't skip any cell.
 
-Sarah's job this week: predict which NorthStar customers will churn next quarter. The notebook hands her a 10,000-row customer dataset with 11 features and a `churned` label. She'll train a logistic regression, see "88% accuracy" — and then discover that this catches only 7 of 239 actual churners. *Accuracy is a lie when classes are imbalanced.*
+Sarah's job this week: predict which NorthStar customers will churn next quarter. The notebook hands her a 10,000-row customer dataset with 11 features and a `churned` label. She'll open the file the way a professional does — checking column types, missing values, and class balance — and discover that only ~12% of customers churned. That means a "model" that always predicts STAYED would score 88% accuracy while catching zero churners. *Accuracy is a lie when classes are imbalanced* — that realisation drives the whole week.
 
 If this is your first time running a notebook in this repo, see [setup.md](./setup.md) once — you only need to do this for the first lesson.
 
@@ -32,17 +34,17 @@ If this is your first time running a notebook in this repo, see [setup.md](./set
 
 Write a sentence or two for each. You can scribble in a notebook, in a journal, or just hold the answer in your head — what matters is that you *tried*.
 
-**Q1. 88% accuracy, 7 of 239 churners caught.**
+**Q1. The 88% trap.**
 
-Why is the headline accuracy misleading here? What metric would you report to Marcus instead?
+Only ~12% of customers churned. Why would a "model" that always predicts STAYED score 88% accuracy — and why is that number worthless to Marcus?
 
 **Q2. Threshold choice as a business decision.**
 
-Sarah has a retention team that can call ~200 customers a week. How should that capacity number affect the model's threshold? (One sentence.)
+Sarah has a retention team that can call ~200 customers a week. If a model gives each customer a churn *probability*, how should that capacity number affect where Sarah draws the line between "call" and "don't call"? (One sentence — we build this properly in class.)
 
-**Q3. What's a 'pipeline' and why bother?**
+**Q3. The missing logins.**
 
-Why is wrapping preprocessing + model in one sklearn `Pipeline` better than running the steps separately?
+About 8% of `last_login_days_ago` values are missing. Why might the *fact that a value is missing* itself be a useful clue about churn?
 
 ---
 
